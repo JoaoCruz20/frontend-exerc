@@ -13,3 +13,12 @@
 .search-box:focus {
   outline: 1px solid #16a2ff;
 }
+
+.autocomplete-items{
+  width: 100%;
+  padding: 1%;
+  font-size: 14px;
+  border: 1px solid #e4e4e4;
+  background-color: white;
+  border-radius: 4px;
+}
