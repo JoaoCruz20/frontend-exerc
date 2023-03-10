@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-
-import { fetchProductDetail } from "./utils/api";
-
+import { fetchProductDetail } from "../utils/api";
 import "./ProductDetail.css";
 
 function ProductDetail({ productId }) {
   const [productInfo, setProductInfo] = useState(null);
 
   useEffect(() => {
-    if (!productId) return;
+    if (!productId) return (<h1>No Product Found</h1>);
 
     fetchProductDetail(productId).then((productInfo) =>
       setProductInfo(productInfo)
@@ -19,19 +17,16 @@ function ProductDetail({ productId }) {
     return (
       <div className="detail-container">
         <div className="row">
-          <img src={productInfo.image} className="product-image" />
+          <img src={productInfo?.image} alt={productInfo?.title} className="product-image" />
         </div>
         <div className="row">
-          <div className="row-title">Name:</div>
-          <div className="row-body">{productInfo.title}</div>
+          <h2 className="row-title">{productInfo?.title}</h2>
         </div>
         <div className="row">
-          <div className="row-title">Name:</div>
-          <div className="row-body">{productInfo.description}</div>
+          <p className="row-description">{productInfo?.description}</p>
         </div>
         <div className="row">
-          <div className="row-title">Price:</div>
-          <div className="row-body">{productInfo.price}</div>
+          <h3 className="row-price">£{productInfo?.price}</h3>
         </div>
       </div>
     );
